@@ -1,29 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-//5 farklı EXcel dosyasının adını bir sepete koyuyıruz
-using System.Runtime.CompilerServices;
+//1.Kutularımızı hazırlayalım
+decimal monthlyBudget = 5000.00m;
+decimal totalExpenditures = 5500.00m;
 
-string[] excelFiles = { "Satislar_Ocak", "Satislar_Subat", "Satislar_Mart", "Giderler_2025", "Personel_Prim", "1113", "1114" };
+bool emergencyMode = true;
 
-// Bu sepetin içindeki 1.dosyayı (yazılımda sayma 0'dan başlar) ekrana yazdıralım.
-Console.WriteLine("Lstenin ilk dosyası: " + excelFiles[0]);
-
-Console.WriteLine("--- Otomasyon Başlıyor ---");
-
-for (int i = 0; i< excelFiles.Length; i++)
+// 2.Karar melanizması ()Kutuları karşılaştırıyoruz)
+if(totalExpenditures > monthlyBudget && emergencyMode == true)
 {
-    if (excelFiles[i] == "Giderler_2025")
-    {
-        Console.WriteLine("DİKKAT: Bu bütçe dosyasıdır!");
-    }
-    else 
-    {
-    
-    }
-        //i her turda 0, 1 , 2, 3, 4 olacak...
-        Console.WriteLine(excelFiles[i] + ".xlsx dosyası işleniyor...");
-    Console.WriteLine("Veriler kopyalandı ve PDF'e dönüştürüldü.");
-    Console.WriteLine("---------------------------------------");
+    Console.WriteLine("ATTENTİON: You exceeded the BUdget!");
+    Console.WriteLine("CRİTİCAL WARNİNG: The Budget has been exceed and emergency mode has been activated!");
 }
-
-Console.WriteLine("Tüm işlemler başarıyla tamamlandı!");
+else
+{
+    Console.WriteLine("Congratulations, You are within Budget.");
+}
