@@ -1,18 +1,24 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-//1.Kutularımızı hazırlayalım
-decimal monthlyBudget = 5000.00m;
-decimal totalExpenditures = 5500.00m;
+Console.WriteLine("---Budget Control Panel---");
 
-bool emergencyMode = true;
+Console.Write("Please Enter Your Monthly Budget: ");
+//Kalvyeden girilen metni(string)okur. (kalvyeden geln herşey stringtir.)
+string? enteredBudget = Console.ReadLine();
 
-// 2.Karar melanizması ()Kutuları karşılaştırıyoruz)
-if(totalExpenditures > monthlyBudget && emergencyMode == true)
+//DİKKAT: Klavyeden geşlen herşey 'string' (metin)olarak gelir.
+//Hesap yapabilmek için onu 'decimal' kutusuna dönüştürmemiz (convert) gerekir.
+
+decimal budget = Convert.ToDecimal(enteredBudget);
+
+Console.Write("Enter The Amount Spent: ");
+decimal spending = Convert.ToDecimal(Console.ReadLine());
+
+if(spending > budget)
 {
-    Console.WriteLine("ATTENTİON: You exceeded the BUdget!");
-    Console.WriteLine("CRİTİCAL WARNİNG: The Budget has been exceed and emergency mode has been activated!");
+    Console.WriteLine("WARNİNG:You exceeded your budget by " + (spending - budget) + " TL");
 }
 else
 {
-    Console.WriteLine("Congratulations, You are within Budget.");
+    Console.WriteLine("Congratulations! You are save to " + (budget - spending) + " TL from your budget." );
 }
