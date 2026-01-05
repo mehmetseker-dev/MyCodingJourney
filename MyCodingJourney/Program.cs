@@ -1,33 +1,28 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-Console.WriteLine("---Budget Control Panel---");
+// 1.Bir dizi (çekmece)oluşturalım. İçinde 3 tane dosya adı olun.
+string[] dosyalar = { "Rapor_1", "Rapor_2", "Rapor_3" };
 
-try
+Console.Write("Aramak istediğiniz dosya adını girin: ");
+string? aranan = Console.ReadLine();
+
+bool bulunduMu = false;
+
+//2.Foreach döngüsü ile bu çekmecenin içine sırayla bakalım.
+//Bilgisayara diyoruz ki: "dosyalar" dizisindeki her bir "dosya" için şunları yap.
+foreach (string dosya  in dosyalar)
 {
-    // Hata yapma ihtimali olan kodlar buraya yazılır.
-    Console.Write("Please! Enter a numerical budget; ");
-    decimal budget = Convert.ToDecimal(Console.ReadLine());
-    Console.WriteLine("Your budget has been successfully saved: " + budget);
-
-    Console.Write("\nYou've entered your expense.; ");
-    decimal totalExpence = Convert.ToDecimal(Console.ReadLine());
-    Console.WriteLine("Your expence has been successfully saved: " + totalExpence);
-
-    decimal budgetGap = budget - totalExpence;
-    Console.WriteLine("\nYour Budget difference:" + budgetGap);
-
-    if (budgetGap >= 0)
+    if(dosya == aranan)
     {
-        Console.WriteLine("\nConguratulations! You did not exceed the budget.");
+        bulunduMu = true;
+        break; // Dosyayı bulduysak döngüden çıkalım., boşuna devam etmesin.
     }
-    else
-    {
-        Console.WriteLine("Warning! Your budget has been exceeded.");
-    }
-
 }
-catch (Exception)
+if (bulunduMu)
 {
-    //Eğer yukarıda bir hata olursa, program kapanmaz ve buraya atlar.
-    Console.WriteLine("ERROR: Please enter just numeral! The program crash was prevented.");
+    Console.WriteLine("Sistem Mesajı: Dosya bulundu ve işleme alındı.");
+}
+else
+{
+    Console.WriteLine("Sistem Mesajı: Hata! Aranan dosya Listede yok.");
 }
