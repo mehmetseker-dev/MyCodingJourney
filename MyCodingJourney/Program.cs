@@ -1,28 +1,25 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿ // See https://aka.ms/new-console-template for more information
 
-// 1.Bir dizi (çekmece)oluşturalım. İçinde 3 tane dosya adı olun.
-string[] dosyalar = { "Rapor_1", "Rapor_2", "Rapor_3" };
+string[] products = { "Elma", "Armut", "Portakal", "Mandalina", "Limon" };
 
-Console.Write("Aramak istediğiniz dosya adını girin: ");
-string? aranan = Console.ReadLine();
+Console.Write("Ürün seçiniz: ");
+string? secim = Console.ReadLine();
 
-bool bulunduMu = false;
+bool varMı = false;
 
-//2.Foreach döngüsü ile bu çekmecenin içine sırayla bakalım.
-//Bilgisayara diyoruz ki: "dosyalar" dizisindeki her bir "dosya" için şunları yap.
-foreach (string dosya  in dosyalar)
+foreach (string product in products)
 {
-    if(dosya == aranan)
+    if (product == secim)
     {
-        bulunduMu = true;
-        break; // Dosyayı bulduysak döngüden çıkalım., boşuna devam etmesin.
+        varMı = true;
+        break;
     }
 }
-if (bulunduMu)
+if (varMı)
 {
-    Console.WriteLine("Sistem Mesajı: Dosya bulundu ve işleme alındı.");
+    Console.WriteLine(" Ürün stoktaki mevcut");
 }
 else
 {
-    Console.WriteLine("Sistem Mesajı: Hata! Aranan dosya Listede yok.");
+    Console.WriteLine("Ürün stokta mevcut değil.");
 }
