@@ -1,25 +1,38 @@
-﻿ // See https://aka.ms/new-console-template for more information
+﻿// See https://aka.ms/new-console-template for more information
 
-string[] products = { "Elma", "Armut", "Portakal", "Mandalina", "Limon" };
+string[] urunler = { "Klavye", "Mouse", "Monitör" };
+bool programCalisiyor = true;
 
-Console.Write("Ürün seçiniz: ");
-string? secim = Console.ReadLine();
-
-bool varMı = false;
-
-foreach (string product in products)
+while (programCalisiyor)
 {
-    if (product == secim)
+    Console.WriteLine("\n--- OTOMASYON PANELİ ---");
+    Console.WriteLine("\n1 - Dosya Durumu Kontrol Et");
+    Console.WriteLine("2 - Çıkış Yap");
+
+    
+
+    Console.Write("Seçiminiz: ");
+    string? secim = Console.ReadLine();
+
+
+    if (secim == "1")
     {
-        varMı = true;
-        break;
+        Console.WriteLine("\nÜrünler Listesi");
+        foreach(string urun in urunler)
+        {
+            Console.WriteLine("- " + urun);
+        }
     }
-}
-if (varMı)
-{
-    Console.WriteLine(" Ürün stoktaki mevcut");
-}
-else
-{
-    Console.WriteLine("Ürün stokta mevcut değil.");
+    else if(secim == "2")
+    {
+        programCalisiyor = false; // Döngüyü kırar ve programı bitirir.
+        Console.WriteLine("Otomasyon kapatılıyor. İyi günler!");
+    }
+    else
+    {
+        Console.WriteLine("Geçersiz secim, lütfen tekrar deneyin");
+    }
+
+
+
 }
