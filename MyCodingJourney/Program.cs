@@ -1,5 +1,24 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+static void UrunleriListele(string[] liste)
+{
+    
+    
+
+    Console.WriteLine("\nÜrünler Listesi");
+    foreach (string urun in liste)
+    {
+        Console.WriteLine("- " + urun);
+    }
+}
+
+static void Selamla()
+{
+    Console.WriteLine("Sisteme Hoş Geldiniz.");
+}
+
+Selamla();
+
 string[] urunler = { "Klavye", "Mouse", "Monitör" };
 bool programCalisiyor = true;
 
@@ -17,11 +36,7 @@ while (programCalisiyor)
 
     if (secim == "1")
     {
-        Console.WriteLine("\nÜrünler Listesi");
-        foreach(string urun in urunler)
-        {
-            Console.WriteLine("- " + urun);
-        }
+        UrunleriListele(urunler);
     }
     else if(secim == "2")
     {
