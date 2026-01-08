@@ -1,5 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
+static int UrunSayisiniGetir(string[] liste)
+{
+    int sayi = liste.Length;
+    return sayi;
+}
 static void UrunleriListele(string[] liste)
 {
     
@@ -21,6 +25,9 @@ Selamla();
 
 string[] urunler = { "Klavye", "Mouse", "Monitör" };
 bool programCalisiyor = true;
+
+int toplamUrun =UrunSayisiniGetir(urunler);
+Console.WriteLine("Sistemde toplam " + toplamUrun + " ürün kayıtlı.");
 
 while (programCalisiyor)
 {
