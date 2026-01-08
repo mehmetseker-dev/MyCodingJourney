@@ -1,4 +1,22 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+
+static bool SifreKontrolEt()
+{
+    Console.Write("Sistem Şifresini Giriniz: ");
+    string? girilen =Console.ReadLine();
+
+    if(girilen == "1234")
+    {
+        Console.WriteLine("Giriş Başarılı!");
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 static int UrunSayisiniGetir(string[] liste)
 {
     int sayi = liste.Length;
@@ -22,6 +40,16 @@ static void Selamla()
 }
 
 Selamla();
+
+// Şifre kontrolü doğru olmadığı sürece programın devamına izin vermeyelim.
+if(SifreKontrolEt() == false)
+{
+    Console.WriteLine("Yetkisiz Giriş! Programda kapatılıyor.");
+    return; // Main metodundan çıkar, yani programı bitirir.
+}
+
+// --- Şifre doğruysa burdaki eski kodların çalışmaya devam eder ---
+// bool programCalışıyor = true; ... diye devam eden o meşhur while döngün.
 
 string[] urunler = { "Klavye", "Mouse", "Monitör" };
 bool programCalisiyor = true;
