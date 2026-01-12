@@ -11,13 +11,25 @@ class Program
 
     static void Main(string[] args)
     {
+        Selamla();
+
+        // Şifre kontrolü doğru olmadığı sürece programın devamına izin vermeyelim.
+        if (SifreKontrolEt() == false)
+        {
+            Console.WriteLine("Yetkisiz Giriş! Programda kapatılıyor.");
+            return; // Main metodundan çıkar, yani programı bitirir.
+        }
+
+        // --- Şifre doğruysa burdaki eski kodların çalışmaya devam eder ---
+        // bool programCalışıyor = true; ... diye devam eden o meşhur while döngün.
+
         //Şifre ve Selamla metotlarını burada çağırıyoruz.
         bool programCalisiyor = true;
 
         while (programCalisiyor)
         {
             Console.WriteLine("\n--- ENVANTER YÖNETİMİ ---");
-            Console.WriteLine("1 - Listele | 2- Ürün Ekle | 3-Çıkış");
+            Console.WriteLine("1 - Listele | 2- Ürün Ekle | 3-Ürün kaldır | 4-Ürün Arama | 5-Çıkış");
             Console.Write("Seçiminiz: ");
             string? secim = Console.ReadLine();
 
@@ -32,21 +44,17 @@ class Program
             }
             else if (secim == "3")
             {
+                UrunSil();
+            }
+            else if (secim == "4")
+            {
+                UrunAra();
+            }
+            else if (secim == "5")
+            {
                 programCalisiyor = false;
             }
         }
-
-        Selamla();
-
-        // Şifre kontrolü doğru olmadığı sürece programın devamına izin vermeyelim.
-        if (SifreKontrolEt() == false)
-        {
-            Console.WriteLine("Yetkisiz Giriş! Programda kapatılıyor.");
-            return; // Main metodundan çıkar, yani programı bitirir.
-        }
-
-        // --- Şifre doğruysa burdaki eski kodların çalışmaya devam eder ---
-        // bool programCalışıyor = true; ... diye devam eden o meşhur while döngün.
     }
 
     //2.ADIM: Listeleme Metodu (Parametre almsına gereke kalmadı, global listeyi kullanıyor.
@@ -67,7 +75,46 @@ class Program
         if (!string.IsNullOrEmpty(yeni))
         { 
         urunler.Add(yeni); // Listeye ekleme yapar.
-        Console.WriteLine("Üürn başarıyla eklendi!");
+        Console.WriteLine("Ürün başarıyla eklendi!");
+        }
+    }
+
+    static void UrunSil()
+    {
+        Console.Write("Kaldırılacak Ürün Adı: ");
+        string? silinecek = Console.ReadLine();
+
+        if(!string.IsNullOrEmpty(silinecek))
+        {
+            bool silindiMi = urunler.Remove(silinecek);
+            if (silindiMi)
+            {
+                Console.WriteLine("İleti: " + silinecek + " başarıyla silindi.");
+            }
+            else
+            {
+                Console.WriteLine("Hata: Listede '" + silinecek + "' bulunamadığı için silinemedi.");
+            }
+                urunler.Remove(silinecek);
+            
+        }
+    }
+
+    static void UrunAra()
+    {
+        Console.Write("Aranılacak Ürün Adı: ");
+        string? aranan = Console.ReadLine();
+
+        if (!string.IsNullOrEmpty(aranan))
+        {
+            if(urunler.Contains(aranan))
+            {
+                Console.WriteLine("Sonuç: " + aranan + " stoklarımızda mevcuttur.");
+            }
+            else
+            {
+                Console.WriteLine("Sonuç: '" + aranan + "' isimli bir ürün bulunamadı.");
+            }
         }
     }
     static bool SifreKontrolEt()
